@@ -19,12 +19,16 @@ var reverseList = function(head) {
         return head
     }
 
-    let nextNode = currentNode.next
+    let tempNode = new ListNode(-1, null)
 
-    result = reverseList(nextNode)
+    while (head !== null) {
+        let nextNode = head.next
 
-    nextNode.next = head
-    head.next = null
+        head.next = tempNode.next
+        tempNode.next = head
 
-    return result
+        head = nextNode
+    }
+
+    return tempNode.next
 }
